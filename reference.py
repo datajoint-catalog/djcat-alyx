@@ -62,7 +62,6 @@ class UserPermission(dj.Lookup):
 @schema
 class BrainLocation(dj.Manual):
     # <class 'misc.models.BrainLocation'>
-
     definition = """
     id:				char(32)	# id
     ---
