@@ -1,0 +1,9 @@
+# <class 'equipment.models.LabLocation'>
+# <class 'equipment.models.EquipmentModel'>
+# <class 'equipment.models.VirusBatch'>
+# <class 'equipment.models.Appliance'>
+# <class 'equipment.models.WeighingScale'>
+# <class 'equipment.models.LightSource'>
+# <class 'equipment.models.Amplifier'>
+# <class 'equipment.models.PipettePuller'>
+# <class 'equipment.models.DAQ'>
