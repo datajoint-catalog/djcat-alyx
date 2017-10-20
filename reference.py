@@ -1,6 +1,6 @@
-# <class 'misc.models.OrderedUser'>
-# <class 'django.contrib.auth.models.User'>
-# <class 'misc.models.BrainLocation'>
+
+
+
 
 import datajoint as dj
 
@@ -9,7 +9,8 @@ schema = dj.schema(dj.config['FIXME'], locals())
 
 @schema
 class User(dj.Manual):
-
+    # <class 'misc.models.OrderedUser'>
+    # <class 'django.contrib.auth.models.User'>
     definition = """
     username:		varchar(255)	# username
     ---
@@ -60,6 +61,7 @@ class UserPermission(dj.Lookup):
 
 @schema
 class BrainLocation(dj.Manual):
+    # <class 'misc.models.BrainLocation'>
 
     definition = """
     id:				char(32)	# id
