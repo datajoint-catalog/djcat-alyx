@@ -9,7 +9,7 @@ import datajoint as dj
 class Species(dj.Manual):
     # <class 'subjects.models.Species'>
     definition = """
-    species_id:				char(32)	# id
+    species_id:				char(32)	# species id
     ---
     json:				varchar(255)	# json
     binomial:				varchar(255)	# binomial
@@ -21,7 +21,7 @@ class Species(dj.Manual):
 class Strain(dj.Manual):
     # <class 'subjects.models.Strain'>
     definition = """
-    strain_id:				char(32)	# id
+    strain_id:				char(32)	# strain id
     ---
     json:				varchar(255)	# json
     descriptive_name:			varchar(255)	# descriptive name
@@ -33,7 +33,7 @@ class Strain(dj.Manual):
 class Sequence(dj.Manual):
     # <class 'subjects.models.Sequence'>
     definition = """
-    sequence_id:			char(32)	# id
+    sequence_id:			char(32)	# sequence id
     ---
     base_pairs:				varchar(255)	# base pairs
     description:			varchar(255)	# description
@@ -46,7 +46,7 @@ class Sequence(dj.Manual):
 class Allele(dj.Manual):
     # <class 'subjects.models.Allele'>
     definition = """
-    allele_id:				char(32)	# id
+    allele_id:				char(32)	# allele id
     ---
     standard_name:			varchar(255)	# standard name
     informal_name:			varchar(255)	# informal name
@@ -62,7 +62,7 @@ class Line(dj.Manual):
     -> Species
     -> Strain
     -> Sequence
-    line_id:				char(32) 	# id
+    line_id:				char(32) 	# line id
     ---
     name:				varchar(255)	# name
     description:			varchar(255)	# description
@@ -80,7 +80,7 @@ class Line(dj.Manual):
 class Source(dj.Manual):
     # <class 'subjects.models.Source'>
     definition = """
-    source_id:				char(32)	# id
+    source_id:				char(32)	# source id
     ---
     json:				varchar(255)	# json
     name:				varchar(255)	# name
@@ -94,7 +94,7 @@ class SubjectRequest(dj.Manual):
     definition = """
     -> User
     -> Line
-    subject_request_id:			char(32)	# id
+    subject_request_id:			char(32)	# subject request id
     ---
     json:				varchar(255)	# json
     count:				integer		# count
@@ -112,7 +112,7 @@ class Subject(dj.Manual):
     # - -> SubjectRequest or track subjects as part table of subject request?
 
     definition = """
-    subject_id:			char(32)		# id
+    subject_id:			char(32)		# subject id
     ---
     -> Line
     nickname:			varchar(255)		# nickname
@@ -152,7 +152,7 @@ class Subject(dj.Manual):
 class BreedingPair(dj.Manual):
     # <class 'subjects.models.BreedingPair'>
     definition = """
-    breeding_pair_id:		char(32)		# id
+    breeding_pair_id:		char(32)		# breeding pair id
     ---
     name:			varchar(255)		# name
     description:		varchar(255)		# description
@@ -168,7 +168,7 @@ class BreedingPair(dj.Manual):
         # <class 'subjects.models.Litter'>
         definition = """
         -> BreedingPair
-        litter_id:			char(32)	# id
+        litter_id:			char(32)	# litter id
         ---
         descriptive_name:		varchar(255)	# descriptive name
         description:			varchar(255)	# description
@@ -190,7 +190,7 @@ class GenotypeTest(dj.Manual):
     definition = """
     -> Subject
     -> Sequence
-    genotype_test_id:			char(32)	# id
+    genotype_test_id:			char(32)	# genotype test id
     ---
     json:				varchar(255)	# json
     test_result:			integer		# test result
