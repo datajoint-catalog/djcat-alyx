@@ -4,7 +4,7 @@
 
 import datajoint as dj
 
-schema = dj.schema(dj.config['FIXME'], locals())
+# schema = dj.schema(dj.config['FIXME'], locals())
 
 
 @schema
@@ -71,3 +71,20 @@ class BrainLocation(dj.Manual):
     description:		varchar(255)	# description
     allen_location_ontology:    varchar(255)	# allen location ontology
     """
+
+
+@schema
+class Severity(dj.Lookup):
+    definition = """
+    severity:			tinyint			# severity
+    ---
+    severity_desc:		varchar(32)		# severity desc
+    """
+    contents = (
+        (0, ''),
+        (1, 'Sub-threshold'),
+        (2, 'Mild'),
+        (3, 'Moderate'),
+        (4, 'Severe'),
+        (5, 'Non-recovery'),
+    )
