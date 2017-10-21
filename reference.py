@@ -63,7 +63,7 @@ class UserPermission(dj.Lookup):
 class BrainLocation(dj.Manual):
     # <class 'misc.models.BrainLocation'>
     definition = """
-    brain locat ion id:		char(32)	# brain location id
+    brain_location_id:		char(32)	# brain location id
     ---
     name:			varchar(255)	# name
     stereotaxic_coordinates:	longblob	# stereotaxic coordinates
