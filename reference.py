@@ -63,13 +63,13 @@ class UserPermission(dj.Lookup):
 class BrainLocation(dj.Manual):
     # <class 'misc.models.BrainLocation'>
     definition = """
-    id:				char(32)	# id
+    brain locat ion id:		char(32)	# brain location id
     ---
-    json:			varchar(255)	# json
     name:			varchar(255)	# name
     stereotaxic_coordinates:	longblob	# stereotaxic coordinates
     description:		varchar(255)	# description
     allen_location_ontology:    varchar(255)	# allen location ontology
+    json:			varchar(255)	# json
     """
 
 
