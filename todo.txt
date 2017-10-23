@@ -1,7 +1,36 @@
-# todo
+# status/todo
 
-Reorg machine-translated schema into 'Datajoiious' submodules,
-resolving various non-translated items (classtype, field refs, etc)
+Current state is a manually converted schema which retains the Alyx'
+notion of inherited Dataset, TimeSeries base classes & data attributes.
+
+This will be extracted into a separate 'initial' schema to highlight how things
+'are', and then converted into a more 'Datajoiious' schema which removes these
+things.
+
+Some questions still remain concerning the need for the previous
+attributes, since they do track data provenenance in some way- namely:
+
+- To what extent is provenance tracking a hard requirement or a side-effect
+  of not having automated dependency tracking internally in the code,
+  and if the answer varies, which types is it specifically important for,
+  and why.
+
+- To what extent is provenance tracking predicated on the notion of
+  alyx as a front end to a file-based repository, and to what extent
+  would this be obviated by use of DJ external file tracking
+
+- To what extent could some file attributes be tracked as blobs internally,
+  and which ones should not be
+
+Additionally, the alyx pkey/UUID scheme allows for some features and masks
+other relationships:
+
+ - Some objects were shifted into part tables due to key conflicts and
+   mismatching with DJ's unique-attribute-name expectation
+ - Relationships between these parts was at times ignored or assumed
+   (FIXME: really, or did my understanding of dj<->django mappings change?)
+ - The JSON per-object annotations & JSON Notes table are built against
+   inheritance and assuming common PKEYS
 
 # manual module dependancy ordering / renaming
 
@@ -85,10 +114,10 @@ epyhs
 # <class 'electrophysiology.models.SpikeSorting'>
 # <class 'electrophysiology.models.SpikeSortedUnit'>
 # <class 'electrophysiology.models.IntracellularRecording'>
-### CONVERSION BOOKMARK - above completed.
 # <class 'imaging.models.SVDCompressedMovie'>
 # <class 'imaging.models.WidefieldImaging'>
 # <class 'imaging.models.TwoPhotonImaging'>
 # <class 'imaging.models.ROIDetection'>
 # <class 'imaging.models.ROI'>
-### CONVERSION BOOKMARK - above inprogress.
+### v1 CONVERSION BOOKMARK - above completed.
+### v1 CONVERSION BOOKMARK - above inprogress.
