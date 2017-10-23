@@ -26,7 +26,6 @@ imaging
 epyhs
 
 # topological sort of django model classes
-
 # <class 'subjects.models.Species'>
 # <class 'subjects.models.Strain'>
 # <class 'subjects.models.Line'>
@@ -36,7 +35,6 @@ epyhs
 # <class 'misc.models.OrderedUser'>
 # <class 'subjects.models.SubjectRequest'>
 # <class 'subjects.models.Subject'>
-### CONVERSION BOOKMARK - above inprogress.
 # <class 'django.contrib.auth.models.User'>
 # <class 'subjects.models.Allele'>
 # <class 'subjects.models.Zygosity'>
@@ -79,6 +77,7 @@ epyhs
 # <class 'behavior.models.IntervalSeries'>
 # <class 'behavior.models.OptogeneticStimulus'>
 # <class 'behavior.models.Pharmacology'>
+### CONVERSION BOOKMARK - above completed.
 # <class 'electrophysiology.models.ExtracellularRecording'>
 # <class 'electrophysiology.models.ProbeModel'>
 # <class 'electrophysiology.models.ProbeInsertion'>
@@ -87,6 +86,7 @@ epyhs
 # <class 'electrophysiology.models.SpikeSorting'>
 # <class 'electrophysiology.models.SpikeSortedUnit'>
 # <class 'electrophysiology.models.IntracellularRecording'>
+### CONVERSION BOOKMARK - above inprogress.
 # <class 'imaging.models.SVDCompressedMovie'>
 # <class 'imaging.models.WidefieldImaging'>
 # <class 'imaging.models.TwoPhotonImaging'>
