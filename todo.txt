@@ -77,7 +77,6 @@ epyhs
 # <class 'behavior.models.IntervalSeries'>
 # <class 'behavior.models.OptogeneticStimulus'>
 # <class 'behavior.models.Pharmacology'>
-### CONVERSION BOOKMARK - above completed.
 # <class 'electrophysiology.models.ExtracellularRecording'>
 # <class 'electrophysiology.models.ProbeModel'>
 # <class 'electrophysiology.models.ProbeInsertion'>
@@ -86,9 +85,10 @@ epyhs
 # <class 'electrophysiology.models.SpikeSorting'>
 # <class 'electrophysiology.models.SpikeSortedUnit'>
 # <class 'electrophysiology.models.IntracellularRecording'>
-### CONVERSION BOOKMARK - above inprogress.
+### CONVERSION BOOKMARK - above completed.
 # <class 'imaging.models.SVDCompressedMovie'>
 # <class 'imaging.models.WidefieldImaging'>
 # <class 'imaging.models.TwoPhotonImaging'>
 # <class 'imaging.models.ROIDetection'>
 # <class 'imaging.models.ROI'>
+### CONVERSION BOOKMARK - above inprogress.
