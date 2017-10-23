@@ -88,3 +88,33 @@ class Severity(dj.Lookup):
         (4, 'Severe'),
         (5, 'Non-recovery'),
     )
+
+
+@schema
+class CoordinateTransformation(dj.Manual):
+    # <class 'misc.models.CoordinateTransformation'>
+    definition = """
+    transform_id:		char(32)	# id
+    ---
+    json:			varchar(255)	# json
+    name:    			varchar(255)	# name
+    description:		varchar(255)	# description
+    allen_location_ontology:	varchar(255)	# allen location ontology
+    origin:			longblob	# origin
+    transformation_matrix:    	longblob	# transformation matrix
+    """
+
+
+@schema
+class Note(dj.Manual):
+    # <class 'misc.models.Note'>
+    # FIXME: allows tagging objects via django's ContentType and UUIDs
+    definition = """
+    -> User
+    note_id:		char(32)		# id
+    ---
+    date_time:		datetime		# date time
+    text:		varchar(255)		# text
+    object_id:		char(32)		# object id
+    json:		varchar(255)		# json
+    """
