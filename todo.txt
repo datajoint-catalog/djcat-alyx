@@ -7,28 +7,29 @@ This will be extracted into a separate 'initial' schema to highlight how things
 'are', and then converted into a more 'Datajoiious' schema which removes these
 things.
 
-Some questions still remain concerning the need for the previous
-attributes, since they do track data provenenance in some way- namely:
+Some questions still remain concerning the need for the previous attributes,
+since they do track data provenenance in some way- namely:
 
-- To what extent is provenance tracking a hard requirement or a side-effect
-  of not having automated dependency tracking internally in the code,
-  and if the answer varies, which types is it specifically important for,
-  and why.
+- To what extent is provenance tracking a hard requirement or a side-effect of
+  not having automated dependency tracking internally in the code, and if the
+  answer varies, which types is it specifically important for, and why.
 
-- To what extent is provenance tracking predicated on the notion of
-  alyx as a front end to a file-based repository, and to what extent
-  would this be obviated by use of DJ external file tracking
+- To what extent is provenance tracking predicated on the notion of alyx as a
+  front end to a file-based repository, and to what extent would this be
+  obviated by use of DJ external file tracking
 
-- To what extent could some file attributes be tracked as blobs internally,
-  and which ones should not be
+- To what extent could some file attributes be tracked as blobs internally, and
+  which ones should not be
 
 Additionally, the alyx pkey/UUID scheme allows for some features and masks
 other relationships:
 
  - Some objects were shifted into part tables due to key conflicts and
    mismatching with DJ's unique-attribute-name expectation
- - Relationships between these parts was at times ignored or assumed
-   (FIXME: really, or did my understanding of dj<->django mappings change?)
+
+ - Relationships between these parts was at times ignored or assumed (FIXME:
+   really, or did my understanding of dj<->django mappings change?)
+
  - The JSON per-object annotations & JSON Notes table are built against
    inheritance and assuming common PKEYS
 
