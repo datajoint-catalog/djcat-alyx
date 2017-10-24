@@ -96,7 +96,7 @@ class Severity(dj.Lookup):
 
 
 @schema
-class CoordinateTransformation(djjManual):
+class CoordinateTransformation(dj.Manual):
     # <class 'misc.models.CoordinateTransformation'>
     definition = """
     transform_id:		char(32)	# id
