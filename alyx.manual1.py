@@ -553,10 +553,10 @@ class OtherAction(dj.Manual):
     -> BaseAction
     """
 
+
 # #####################################################################
 # acquisition.py ######################################################
 # #####################################################################
-
 '''
 class deps/inheretance notes from Alyx.data.models
 - BaseExperimenalData
