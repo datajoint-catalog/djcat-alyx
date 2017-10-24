@@ -96,7 +96,7 @@ class Severity(dj.Lookup):
 
 
 @schema
-class CoordinateTransformation(dj.Manual):
+class CoordinateTransformation(djjManual):
     # <class 'misc.models.CoordinateTransformation'>
     definition = """
     transform_id:		char(32)	# id
@@ -232,8 +232,9 @@ class SubjectRequest(dj.Manual):
 class Subject(dj.Manual):
     # <class 'subjects.models.Subject'>
     # todo:
-    # - where did responsible_user go?
+    # - where did responsible_user go? RETEST ADDED
     # - -> SubjectRequest or track subjects as part table of subject request?
+    #      RETEST ADDED
 
     definition = """
     subject_id:			char(32)		# subject id
@@ -247,6 +248,8 @@ class Subject(dj.Manual):
     death_date:			date			# death date
     wean_date:			date			# wean date
     genotype_date:		date			# genotype date
+    (responsible_user)          -> User
+    (request)                   -> SubjectRequest
     lamis_cage:			integer			# lamis cage
     implant_weight:		float			# implant weight
     ear_mark:			varchar(255)		# ear mark
@@ -471,6 +474,7 @@ class WaterAdministration(dj.Manual):
 
 @schema
 class BaseAction(dj.Manual):
+    # <class 'actions.models.BaseAction'>
     definition = """
     -> Subject
     -> LabLocation
@@ -496,7 +500,7 @@ class BaseAction(dj.Manual):
 
 
 @schema
-class MyVirusInjection(dj.Manual):
+class VirusInjection(dj.Manual):
     # <class 'actions.models.VirusInjection'>
     definition = """
     -> BaseAction
