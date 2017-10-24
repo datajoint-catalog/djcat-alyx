@@ -1,28 +1,12 @@
-# <class 'imaging.models.SVDCompressedMovie'>
-# <class 'imaging.models.WidefieldImaging'>
-# <class 'imaging.models.TwoPhotonImaging'>
-# <class 'imaging.models.ROIDetection'>
-# <class 'imaging.models.ROI'>
+
 import datajoint as dj
 
 schema = dj.schema(dj.config['FIXME'], locals())
-'''
-for refs:
-class DataDescription(dj.Manual):
-    # <class 'data.models.BaseExperimentalData> # Abstract
-    definition = """
-    -> Session
-    -> User
-    datadescription_id:		char(32)	# data id
-    created:			datetime	# created
-    generating_software:	varchar(255)	# generating software
-    provenance_directory:	varchar(255)	# provenance directory
-    """
-'''
 
 
 @schema
 class SVDCompressedMovie(dj.Manual):
+    # <class 'imaging.models.SVDCompressedMovie'>
     definition = """
     -> DataDescription
     ---
@@ -46,6 +30,7 @@ class SVDCompressedMovie(dj.Manual):
 
 @schema
 class WidefieldImaging(dj.Manual):
+    # <class 'imaging.models.WidefieldImaging'>
     definition = """
     -> DataDescription
     ---
@@ -77,6 +62,7 @@ class WidefieldImaging(dj.Manual):
 
 @schema
 class TwoPhotonImaging(dj.Manual):
+    # <class 'imaging.models.TwoPhotonImaging'>
     definition = """
     -> DataDescription
     ---
@@ -104,6 +90,7 @@ class TwoPhotonImaging(dj.Manual):
 
 @schema
 class ROIDetection(dj.Manual):
+    # <class 'imaging.models.ROIDetection'>
     definition = """
     -> DataDescription
     ---
@@ -149,6 +136,7 @@ class ROIDetection(dj.Manual):
 
 @schema
 class ROI(dj.Manual):
+    # <class 'imaging.models.ROI'>
     definition = """
     -> DataDescription
     ---
