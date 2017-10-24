@@ -1,7 +1,4 @@
 
-
-
-
 import datajoint as dj
 
 # schema = dj.schema(dj.config['FIXME'], locals())
