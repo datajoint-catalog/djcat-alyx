@@ -5,7 +5,7 @@
 
 import datajoint as dj
 
-schema = dj.schema('tutorial_alyx_manual1', locals())
+schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
 # #####################################################################
 # reference.py ########################################################
