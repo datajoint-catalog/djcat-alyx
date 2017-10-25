@@ -1,6 +1,9 @@
 import datajoint as dj
 
+import reference
+
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
+
 
 
 @schema
@@ -84,7 +87,7 @@ class Source(dj.Manual):
 class SubjectRequest(dj.Manual):
     # <class 'subjects.models.SubjectRequest'>
     definition = """
-    -> User
+    -> reference.User
     -> Line
     subject_request_id:			int     	# subject request id
     ---
@@ -106,16 +109,16 @@ class Subject(dj.Manual):
     definition = """
     subject_id:			int                     # subject id
     ---
-    -> Line
     nickname:			varchar(255)		# nickname
+    -> Line
     sex:			enum("M", "F", "U")	# sex
-    sex:			varchar(255)		# sex
     birth_date:			date			# birth date
     death_date:			date			# death date
     wean_date:			date			# wean date
     genotype_date:		date			# genotype date
-    (responsible_user)          -> User
-    (request)                   -> SubjectRequest
+    (responsible_user)          -> reference.User
+    (request)                   -> SubjectRequest(subject_request_id)
+    -> Source
     lamis_cage:			integer			# lamis cage
     implant_weight:		float			# implant weight
     ear_mark:			varchar(255)		# ear mark
@@ -123,7 +126,7 @@ class Subject(dj.Manual):
     description:		varchar(255)		# description
     cull_method:		varchar(255)		# cull method
     adverse_effects:		varchar(255)		# adverse effects
-    (actual_severity)		-> Severity		# actual severity
+    (actual_severity)		-> reference.Severity   # actual severity
     to_be_genotyped:		boolean			# to be genotyped
     to_be_culled:		boolean			# to be culled
     reduced:			boolean			# reduced
@@ -142,41 +145,6 @@ class Subject(dj.Manual):
 
 
 @schema
-class BreedingPair(dj.Manual):
-    # <class 'subjects.models.BreedingPair'>
-    definition = """
-    breeding_pair_id:		int     		# breeding pair id
-    ---
-    name:			varchar(255)		# name
-    description:		varchar(255)		# description
-    start_date:			date			# start date
-    end_date:			date			# end date
-    (father)			-> Subject		# father
-    (mother1) 			-> Subject		# mother1
-    (mother2)			-> [nullable] Subject	# mother2
-    """
-
-    class Litter(dj.Part):
-        # <class 'subjects.models.Litter'>
-        definition = """
-        -> BreedingPair
-        litter_id:		int             	# litter id
-        ---
-        descriptive_name:	varchar(255)            # descriptive name
-        description:		varchar(255)    	# description
-        birth_date:		date                    # birth date
-        json:			varchar(255)    	# json
-        """
-
-    class Offspring(dj.Part):
-        definition = """
-        -> BreedingPair
-        -> BreedingPair.Litter
-        -> Subject
-        """
-
-
-@schema
 class GenotypeTest(dj.Manual):
     # <class 'subjects.models.GenotypeTest'>
     definition = """
@@ -186,3 +154,25 @@ class GenotypeTest(dj.Manual):
     ---
     test_result:		integer		# test result
     """
+
+
+@schema
+class Birth(dj.Manual):
+    # can be made redundant via queries:
+    # <class 'subjects.models.BreedingPair'>
+    # <class 'subjects.models.Litter'>
+    #
+    # This table *only* required since making subject atttributes w/i subjects
+    # creates graph cycles.
+    #
+    # XXX: cage placement times to emulate previous BreedingPair
+    # (if reproductive success, etc. req'd)
+    definition = """
+    -> Subject
+    ---
+    (father)			-> Subject		# father
+    (mother1) 			-> Subject		# mother1
+    # XXX: explain? (mother2)	-> [nullable] Subject	# mother2
+    """
+
+
