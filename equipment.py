@@ -93,3 +93,9 @@ class Appliance(dj.Manual):
         definition = """
         -> Appliance
         """
+
+    class ProbeModel(dj.Part):
+        # <class 'electrophysiology.models.ProbeModel'>
+        definition = """
+        -> Appliance
+        """
