@@ -9,8 +9,7 @@ class LabLocation(dj.Manual):
     definition = """
     lab_location:		int             # lab location
     ---
-    name                        varchar(255)    # name
-    json:			varchar(255)	# json
+    name:                       varchar(255)    # name
     """
 
 
@@ -53,12 +52,12 @@ class EquipmentModel(dj.Manual):
 @schema
 class Appliance(dj.Manual):
     # <class 'equipment.models.Appliance'>
-    # TODO: Should appliance types just be a lookup?
-    #   assuming Alyx' use of separate classes vs field is reasoned.
+    # TODO: Should appliances be a lookup?
+    # ... assuming Alyx' separate classes vs field is reasoned.
     definition = """
     -> LabLocation
     -> EquipmentModel
-    appliance_id:		char(32)	# id
+    appliance_id:		int             # appliance id
     ---
     serial:			varchar(255)	# serial
     description:		varchar(255)	# description
