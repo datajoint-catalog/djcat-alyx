@@ -78,6 +78,7 @@ class Surgery(dj.Manual):
     -> reference.User
     """
 
+
 @schema
 class Session(dj.Manual):
     # <class 'actions.models.Session'>
@@ -119,7 +120,3 @@ class OtherAction(dj.Manual):
     -> equipment.LabLocation
     -> reference.User
     """
-
-
-
-
