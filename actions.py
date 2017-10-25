@@ -1,84 +1,65 @@
 import datajoint as dj
 
+
+import reference
+import subject
+import equipment
+
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
-
-@schema
-class ProcedureType(dj.Manual):
-    # <class 'actions.models.ProcedureType'>
-    definition = """
-    procedure_id:		id                      # procedure id
-    ---
-    name:			varchar(255)		# name
-    description:		varchar(255)		# description
-    """
+#
+# New
+#
+# Refactor questions w/r/t old objs:
+# - <class 'actions.models.ProcedureType'>: SKIPPED
+#   What does this do aside from provide a description?
+#   should be inclued for e.g. steps, etc?
+# - <class 'actions.models.BaseAction'>: SKIPPED
+#   Other than key info, does this provide anything other than 'narritive'?
+#   if so, needed?
+#
 
 
 @schema
 class Weighing(dj.Manual):
     # <class 'actions.models.Weighing'>
     definition = """
-    -> Subject
-    -> Appliance.WeighingScale
-    weighing_id:                id                      # weighing id
+    -> subject.Subject
+    weighing_time:		datetime		# date time
     ---
-    -> User
-    date_time:			datetime		# date time
     weight:			float			# weight
+    -> equipment.Appliance.WeighingScale
+    -> reference.User
     """
 
 
 @schema
 class WaterAdministration(dj.Manual):
     # <class 'actions.models.WaterAdministration'>
-    # TODO: hydrogel=NULL default, nullable boolean
     definition = """
-    -> User
-    -> Subject
-    water_administration_id:	int     		# water admin. id
+    -> subject.Subject
+    administration_time:	datetime		# date time
     ---
-    date_time:			datetime		# date time
     water_administered:		float			# water administered
-    hydrogel=NULL:		[nullable] boolean	# hydrogel
+    hydrogel=NULL:		boolean                 # hydrogel
+    -> reference.User
     """
-
-
-# XXX: OOFIXME
-@schema
-class BaseAction(dj.Manual):
-    definition = """
-    -> Subject
-    -> LabLocation
-    action_id:			int     	# action id
-    ---
-    start_time:			datetime	# start time
-    end_time:			datetime	# end time
-    narrative:			varchar(255)	# narrative
-    """
-
-    class ActionUser(dj.Part):
-        definition = """
-        -> BaseAction
-        -> User
-        """
-
-    class ActionProcedure(dj.Part):
-        definition = """
-        -> BaseAction
-        -> ProcedureType
-        """
 
 
 @schema
 class VirusInjection(dj.Manual):
     # <class 'actions.models.VirusInjection'>
+    # XXX: user was m2m field in django
     definition = """
-    -> BaseAction
+    -> subject.Subject
+    -> equipment.VirusBatch
+    injection_time:		datetime        	# injection time
     ---
-    -> VirusBatch
-    injection_volume:		float		# injection volume
-    rate_of_injection:		float		# rate of injection
-    injection_type:		varchar(255)	# injection type
+    injection_volume:		float   		# injection volume
+    rate_of_injection:		float                   # rate of injection
+    injection_type:		varchar(255)    	# injection type
+    -> equipment.LabLocation
+    -> reference.User
     """
 
 
@@ -86,21 +67,30 @@ class VirusInjection(dj.Manual):
 class Surgery(dj.Manual):
     # <class 'actions.models.Surgery'>
     definition = """
-    -> BaseAction
-    -> BrainLocation
+    -> subject.Subject
+    -> reference.BrainLocation
+    surgery_start_time:		datetime        # surgery start time
     ---
+    surgery_end_time:		datetime        # surgery end time
     outcome_type:		varchar(255)	# outcome type
+    narrative:			varchar(255)	# narrative
+    -> equipment.LabLocation
+    -> reference.User
     """
-
 
 @schema
 class Session(dj.Manual):
     # <class 'actions.models.Session'>
+    # XXX: session_type table?
     definition = """
-    -> BaseAction
-    ---
-    type:			varchar(255)	# type
+    -> subject.Subject
     number:			integer		# number
+    ---
+    start_time:			datetime	# start time
+    end_time:			datetime	# end time
+    session_type:		varchar(255)	# type
+    -> equipment.LabLocation
+    -> reference.User
     """
 
 
@@ -108,7 +98,12 @@ class Session(dj.Manual):
 class WaterRestriction(dj.Manual):
     # <class 'actions.models.WaterRestriction'>
     definition = """
-    -> BaseAction
+    -> subject.Subject
+    start_time:			datetime	# start time
+    ---
+    end_time:			datetime	# end time
+    -> equipment.LabLocation
+    -> reference.User
     """
 
 
@@ -116,5 +111,15 @@ class WaterRestriction(dj.Manual):
 class OtherAction(dj.Manual):
     # <class 'actions.models.OtherAction'>
     definition = """
-    -> BaseAction
+    -> subject.Subject
+    start_time:			datetime	# start time
+    ---
+    end_time:			datetime	# end time
+    descrption:                 varchar(255)    # description
+    -> equipment.LabLocation
+    -> reference.User
     """
+
+
+
+
