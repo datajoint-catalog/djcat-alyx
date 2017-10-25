@@ -7,6 +7,15 @@ import equipment
 
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
+'''
+TODO: TimeScale items missing wrt TimeSeries items, which were:
+- PupilTracking.xyd
+- PupilTracking.movie
+- HeadTracking.xy_theta
+- HeadTracking.movie
+TimeScale not yet defined
+'''
+
 
 @schema
 class Movie(dj.Manual):
