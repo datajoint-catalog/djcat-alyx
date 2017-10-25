@@ -2,8 +2,8 @@
 
 Current state is a manually converted schema which retains the Alyx'
 notion of inherited Dataset, TimeSeries base classes & data attributes,
-along with partially implemented 'Datajoiious' schema which removes these
-things.
+along with a re-implemented 'Datajoiious' schema which removes these
+things in favor of internal blob storage and direct 'entity' typing.
 
 Some questions still remain concerning the need for the previous attributes,
 since they do track data provenenance in some way- namely:
@@ -38,10 +38,10 @@ reference -> actions
 subject -> actions
 equipment -> actions
 actions -> acquisition
-# BOOKMARK
 acquisition -> behavior
 acquisition -> imaging
 acquisition -> ephys
+# BOOKMARK
 
 # flattened
 
@@ -121,3 +121,5 @@ imaging
 # <class 'imaging.models.ROI'>
 ### v1 CONVERSION BOOKMARK - above completed.
 ### v1 CONVERSION BOOKMARK - above inprogress.
+### v2 CONVERSION BOOKMARK - above completed.
+### v2 CONVERSION BOOKMARK - above inprogress.
