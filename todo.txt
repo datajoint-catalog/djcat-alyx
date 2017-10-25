@@ -1,10 +1,8 @@
 # status/todo
 
 Current state is a manually converted schema which retains the Alyx'
-notion of inherited Dataset, TimeSeries base classes & data attributes.
-
-This will be extracted into a separate 'initial' schema to highlight how things
-'are', and then converted into a more 'Datajoiious' schema which removes these
+notion of inherited Dataset, TimeSeries base classes & data attributes,
+along with partially implemented 'Datajoiious' schema which removes these
 things.
 
 Some questions still remain concerning the need for the previous attributes,
@@ -40,6 +38,7 @@ reference -> actions
 subject -> actions
 equipment -> actions
 actions -> acquisition
+# BOOKMARK
 acquisition -> behavior
 acquisition -> imaging
 acquisition -> ephys
@@ -48,12 +47,12 @@ acquisition -> ephys
 
 reference
 subject
-actions
 equipment
+actions
 acquisition
 behavior
-imaging
 epyhs
+imaging
 
 # topological sort of django model classes
 # <class 'subjects.models.Species'>
