@@ -5,14 +5,12 @@ import reference
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
 
-
 @schema
 class Species(dj.Manual):
     # <class 'subjects.models.Species'>
     definition = """
-    species_id:			int             # species id
-    ---
     binomial:			varchar(255)	# binomial
+    ---
     display_name:		varchar(255)	# display name
     """
 
