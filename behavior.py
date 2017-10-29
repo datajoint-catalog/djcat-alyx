@@ -66,24 +66,12 @@ class OptogeneticStimulus(dj.Manual):
     description:		varchar(255)	# description
     """
 
-    class Time(dj.Part):
+    class Pulse(dj.Part):
         definition = """
         -> OptogeneticStimulus
         ---
         times:                  longblob        # times
-        """
-
-    class Position(dj.Part):
-        definition = """
-        -> OptogeneticStimulus
-        ---
         positions:              longblob        # poitions
-        """
-
-    class Power(dj.Part):
-        definition = """
-        -> OptogeneticStimulus
-        ---
         stimulus_power:         longblob        # stimulus power
         """
 
