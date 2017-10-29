@@ -52,7 +52,7 @@ class ExtracellularRecording(dj.Manual):
 
 
 @schema
-class SpikeSorting(dj.Manual):
+class SortedUnitGroup(dj.Manual):
     # <class 'electrophysiology.models.SpikeSorting'>
     definition = """
     -> ExtracellularRecording
@@ -65,7 +65,7 @@ class SpikeSorting(dj.Manual):
         # TODO: WIDTH_CLASSES
         definition = """
         -> BrainLocation
-        -> SpikeSorting
+        -> SortedUnitGroup
         cluster_number:         integer         # cluster number
         ---
         channel_group:          integer         # channel group
