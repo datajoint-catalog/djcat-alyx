@@ -29,11 +29,10 @@ class Strain(dj.Manual):
 class Sequence(dj.Manual):
     # <class 'subjects.models.Sequence'>
     definition = """
-    sequence_id:		int             # sequence id
+    sequence_name:		varchar(255)	# informal name
     ---
     base_pairs:			varchar(255)	# base pairs
     description:		varchar(255)	# description
-    informal_name:		varchar(255)	# informal name
     """
 
 
