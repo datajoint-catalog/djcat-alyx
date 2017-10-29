@@ -29,9 +29,9 @@ class VirusBatch(dj.Manual):
     definition = """
     -> Supplier
     batch_id:			int             # batch id
+    virus_type:			varchar(255)	# virus type
     ---
     description:		varchar(255)	# description
-    virus_type:			varchar(255)	# virus type
     date_time_made:		datetime	# date time made
     nominal_titer:		float		# nominal titer
     """
