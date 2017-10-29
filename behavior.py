@@ -70,9 +70,9 @@ class OptogeneticStimulus(dj.Manual):
         definition = """
         -> OptogeneticStimulus
         ---
-        times:                  longblob        # times
-        positions:              longblob        # poitions
-        stimulus_power:         longblob        # stimulus power
+        times:                  longblob        # times (n*2 start/stop)
+        positions:              longblob        # poitions (n*3 positions)
+        stimulus_power:         longblob        # power (n*1 pulse power)
         """
 
 
