@@ -110,5 +110,4 @@ class Note(dj.Manual):
     date_time:		datetime		# date time
     text:		varchar(255)		# text
     object_id:		char(32)		# object id
-    json:		varchar(255)		# json
     """
