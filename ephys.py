@@ -27,8 +27,8 @@ class ExtracellularRecording(dj.Manual):
     definition = """
     -> actions.Session
     recording_start_time:       datetime        # start time
-    recording_end_time:         datetime        # end time
     ---
+    recording_end_time:         datetime        # end time
     -> equipment.Appliance.Amplifier
     -> equipment.Appliance.DAQ
     ground_electrode:		varchar(255)    # ground electrode
