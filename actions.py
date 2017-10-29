@@ -88,7 +88,7 @@ class Session(dj.Manual):
     session_number:             integer		# number
     ---
     session_start_time:         datetime	# start time
-    session_aend_time:          datetime	# end time
+    session_end_time:           datetime	# end time
     session_type:		varchar(255)	# type
     -> equipment.LabLocation
     -> reference.User
