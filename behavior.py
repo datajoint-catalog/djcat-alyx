@@ -18,16 +18,6 @@ TimeScale not yet defined
 
 
 @schema
-class Movie(dj.Manual):
-    # created to track movies
-    definition = """
-    movie_id:                   int             # movie id
-    ---
-    movie_data:                 longblob        # movie data
-    """
-
-
-@schema
 class PupilTracking(dj.Manual):
     # <class 'behavior.models.PupilTracking'>
     definition = """
@@ -35,7 +25,7 @@ class PupilTracking(dj.Manual):
     start_time:                 datetime        # start time
     eye:                        enum("L", "R")  # eye
     ---
-    -> Movie
+    pupil_tracking_movie:       longblob        # pupil tracking movie (raw)
     x_y_d:			longblob        # x y data
     """
 
@@ -47,7 +37,7 @@ class HeadTracking(dj.Manual):
     -> actions.Session
     start_time:                 datetime        # start time
     ---
-    -> Movie
+    head_tracking_movie:       longblob        # head tracking movie (raw)
     x_y_theta:			longblob        # x y theta
     """
 
