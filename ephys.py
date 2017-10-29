@@ -16,7 +16,6 @@ class BrainLocation(dj.Manual):
     ccf_lr:			float		# ccf lr
     ---
     allen_ontology:		varchar(255)	# allen ontology
-    json:			varchar(255)	# json
     """
 
 
