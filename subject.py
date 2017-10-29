@@ -19,9 +19,8 @@ class Species(dj.Manual):
 class Strain(dj.Manual):
     # <class 'subjects.models.Strain'>
     definition = """
-    strain_id:			int             # strain id
+    strain_name:		varchar(255)	# strain name
     ---
-    descriptive_name:		varchar(255)	# descriptive name
     description:    		varchar(255)	# description
     """
 
