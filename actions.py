@@ -100,9 +100,9 @@ class WaterRestriction(dj.Manual):
     # <class 'actions.models.WaterRestriction'>
     definition = """
     -> subject.Subject
-    start_time:			datetime	# start time
+    restriction_start_time:     datetime	# start time
     ---
-    end_time:			datetime	# end time
+    restriction_end_time:       datetime	# end time
     -> equipment.LabLocation
     -> reference.User
     """
@@ -113,9 +113,9 @@ class OtherAction(dj.Manual):
     # <class 'actions.models.OtherAction'>
     definition = """
     -> subject.Subject
-    start_time:			datetime	# start time
+    other_action_start_time:    datetime	# start time
     ---
-    end_time:			datetime	# end time
+    other_action_end_time:      datetime	# end time
     descrption:                 varchar(255)    # description
     -> equipment.LabLocation
     -> reference.User

@@ -19,7 +19,7 @@ class SVDCompressedMovie(dj.Manual):
     svd_movie_id:               int             # svd movie id
     ---
     -> reference.User
-    create_date:                datetime        # create date
+    svd_create_date:                datetime        # create date
     eigenframes:                longblob        # svd eigenframes
     timecourses:                longblob        # svd timecourses
     """
@@ -37,9 +37,9 @@ class WidefieldImaging(dj.Manual):
     -> actions.Session
     ---
     -> reference.User
-    create_date:                datetime        # create date
-    start_time:			datetime	# nominal start time
-    end_time:			datetime	# nominal end time
+    widefield_create_date:                datetime        # create date
+    widefield_start_time:       datetime	# nominal start time
+    widefield_end_time:         datetime	# nominal end time
     imaging_indicator:		varchar(255)	# imaging indicator
     preprocessing:		varchar(255)	# preprocessing
     description:		varchar(255)	# description
@@ -64,9 +64,9 @@ class TwoPhotonImaging(dj.Manual):
     -> actions.Session
     ---
     -> reference.User
-    create_date:                datetime        # create date
-    start_time:			datetime	# nominal start time
-    end_time:			datetime	# nominal end time
+    2p_create_date:             datetime        # create date
+    2p_start_time:              datetime	# nominal start time
+    2p_end_time:                datetime	# nominal end time
     description:		varchar(255)	# description
     excitation_wavelength:	float		# excitation nominal wavelength
     recording_wavelength:	float		# recording nominal wavelength
@@ -83,9 +83,9 @@ class ROIDetection(dj.Manual):
     -> actions.Session
     ---
     -> reference.User
-    create_date:                datetime        # create date
-    start_time:			datetime	# nominal start time
-    end_time:			datetime	# nominal end time
+    roi_create_date:            datetime        # create date
+    roi_start_time:             datetime	# nominal start time
+    roi_end_time:               datetime	# nominal end time
     preprocessing:		varchar(255)	# preprocessing
     """
 

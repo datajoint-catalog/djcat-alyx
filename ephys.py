@@ -26,8 +26,8 @@ class ExtracellularRecording(dj.Manual):
     # <class 'electrophysiology.models.ProbeModel'>
     definition = """
     -> actions.Session
-    start_time:                 datetime        # start time
-    end_time:                   datetime        # end time
+    recording_start_time:       datetime        # start time
+    recording_end_time:         datetime        # end time
     ---
     -> equipment.Appliance.Amplifier
     -> equipment.Appliance.DAQ

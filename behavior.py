@@ -22,7 +22,7 @@ class PupilTracking(dj.Manual):
     # <class 'behavior.models.PupilTracking'>
     definition = """
     -> actions.Session
-    start_time:                 datetime        # start time
+    pupil_tracking_start_time:  datetime        # start time
     eye:                        enum("L", "R")  # eye
     ---
     pupil_tracking_movie:       longblob        # pupil tracking movie (raw)
@@ -35,9 +35,9 @@ class HeadTracking(dj.Manual):
     # <class 'behavior.models.HeadTracking'>
     definition = """
     -> actions.Session
-    start_time:                 datetime        # start time
+    head_tracking_start_time:   datetime        # start time
     ---
-    head_tracking_movie:       longblob        # head tracking movie (raw)
+    head_tracking_movie:        longblob        # head tracking movie (raw)
     x_y_theta:			longblob        # x y theta
     """
 
@@ -72,9 +72,9 @@ class Pharmacology(dj.Manual):
     definition = """
     -> actions.Session
     drug:			varchar(255)	# drug
-    start_time:			float		# start time
+    administration_start_time:  float		# start time
     ---
-    end_time:			float		# end time
+    administration_end_time:    float		# end time
     administration_route:	varchar(255)	# administration route
     concentration:		varchar(255)	# concentration
     volume:			varchar(255)	# volume
