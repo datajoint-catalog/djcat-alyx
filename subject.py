@@ -173,7 +173,7 @@ class GenotypeTest(dj.Manual):
 
 
 @schema
-class Genotype(dj.Part):
+class Genotype(dj.Manual):
     # <class 'subjects.models.Subject'>
     # <class 'subjects.models.Zygosity'>
     # genotype = models.ManyToManyField('Allele', through='Zygosity')
