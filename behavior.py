@@ -49,7 +49,7 @@ class OptogeneticStimulus(dj.Manual):
     -> actions.Session
     -> reference.BrainLocation
     ---
-    -> equipment.Appliance
+    -> equipment.LightSource
     light_delivery:		varchar(255)	# light delivery
     wavelength:    		float		# wavelength
     power_calculation_method:	varchar(255)	# power calculation method
