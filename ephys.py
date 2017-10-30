@@ -1,7 +1,7 @@
 import datajoint as dj
 
-import actions
 import equipment
+import behavior
 
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
@@ -25,7 +25,7 @@ class ExtracellularRecording(dj.Manual):
     # <class 'electrophysiology.models.ProbeInsertion'>
     # <class 'electrophysiology.models.ProbeModel'>
     definition = """
-    -> actions.Session
+    -> behavior.Session
     recording_start_time:       datetime        # start time
     ---
     recording_end_time:         datetime        # end time
@@ -87,7 +87,7 @@ class SortedUnitGroup(dj.Manual):
 class IntracellularRecording(dj.Manual):
     # <class 'electrophysiology.models.IntracellularRecording'>
     definition = """
-    -> actions.Session
+    -> behavior.Session
     -> BrainLocation
     ---
     recorded_current:           longblob        # recorded current

@@ -80,22 +80,6 @@ class Surgery(dj.Manual):
 
 
 @schema
-class Session(dj.Manual):
-    # <class 'actions.models.Session'>
-    # XXX: session_type table?
-    definition = """
-    -> subject.Subject
-    session_number:             integer		# number
-    ---
-    session_start_time:         datetime	# start time
-    session_end_time:           datetime	# end time
-    session_type:		varchar(255)	# type
-    -> equipment.LabLocation
-    -> reference.User
-    """
-
-
-@schema
 class WaterRestriction(dj.Manual):
     # <class 'actions.models.WaterRestriction'>
     definition = """

@@ -1,7 +1,7 @@
 import datajoint as dj
 
-import actions
 import reference
+import subject
 import equipment
 
 
@@ -18,10 +18,26 @@ TimeScale not yet defined
 
 
 @schema
+class Session(dj.Manual):
+    # <class 'actions.models.Session'>
+    # XXX: session_type table?
+    definition = """
+    -> subject.Subject
+    session_number:             integer		# number
+    ---
+    session_start_time:         datetime	# start time
+    session_end_time:           datetime	# end time
+    session_type:		varchar(255)	# type
+    -> equipment.LabLocation
+    -> reference.User
+    """
+
+
+@schema
 class PupilTracking(dj.Manual):
     # <class 'behavior.models.PupilTracking'>
     definition = """
-    -> actions.Session
+    -> Session
     pupil_tracking_start_time:  datetime        # start time
     eye:                        enum("L", "R")  # eye
     ---
@@ -34,7 +50,7 @@ class PupilTracking(dj.Manual):
 class HeadTracking(dj.Manual):
     # <class 'behavior.models.HeadTracking'>
     definition = """
-    -> actions.Session
+    -> Session
     head_tracking_start_time:   datetime        # start time
     ---
     head_tracking_movie:        longblob        # head tracking movie (raw)
@@ -46,7 +62,7 @@ class HeadTracking(dj.Manual):
 class OptogeneticStimulus(dj.Manual):
     # <class 'behavior.models.OptogeneticStimulus'>
     definition = """
-    -> actions.Session
+    -> Session
     -> reference.BrainLocation
     ---
     -> equipment.LightSource
@@ -70,7 +86,7 @@ class OptogeneticStimulus(dj.Manual):
 class Pharmacology(dj.Manual):
     # <class 'behavior.models.Pharmacology'>
     definition = """
-    -> actions.Session
+    -> Session
     drug:			varchar(255)	# drug
     administration_start_time:  float		# start time
     ---
