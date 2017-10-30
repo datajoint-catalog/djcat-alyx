@@ -97,47 +97,66 @@ class SubjectRequest(dj.Manual):
 @schema
 class Subject(dj.Manual):
     # <class 'subjects.models.Subject'>
-    # todo:
-    # - where did responsible_user go? RETEST ADDED
-    # - -> SubjectRequest or track subjects as part table of subject request?
-    #      RETEST ADDED
-
     definition = """
     subject_id:			int                     # subject id
     ---
     nickname:			varchar(255)		# nickname
-    -> Line
     sex:			enum("M", "F", "U")	# sex
     birth_date:			date			# birth date
-    death_date:			date			# death date
-    wean_date:			date			# wean date
-    genotype_date:		date			# genotype date
-    (responsible_user)          -> reference.User
+    ear_mark:			varchar(255)		# ear mark
     (request)                   -> SubjectRequest(subject_request_id)
     -> Source
-    lamis_cage:			integer			# lamis cage
-    implant_weight:		float			# implant weight
-    ear_mark:			varchar(255)		# ear mark
-    protocol_number:		varchar(255)		# protocol number
-    description:		varchar(255)		# description
-    cull_method:		varchar(255)		# cull method
-    adverse_effects:		varchar(255)		# adverse effects
-    (actual_severity)		-> reference.Severity   # actual severity
-    to_be_genotyped:		boolean			# to be genotyped
-    to_be_culled:		boolean			# to be culled
-    reduced:			boolean			# reduced
-    reduced_date:		date			# reduced date
+    -> Line
+    (responsible_user)          -> reference.User
     """
 
-    class Genotype(dj.Part):
-        # <class 'subjects.models.Zygosity'>
-        # genotype = models.ManyToManyField('Allele', through='Zygosity')
-        definition = """
-        -> Subject
-        -> Allele
-        ---
-        zygosity:		integer 		# zygosity
-        """
+
+@schema
+class Birth(dj.Manual):
+    # <class 'subjects.models.BreedingPair'>
+    # <class 'subjects.models.Litter'>
+    definition = """
+    -> Subject
+    ---
+    (father)			-> Subject		# father
+    (mother1) 			-> Subject		# mother1
+    # XXX: explain? (mother2)	-> [nullable] Subject	# mother2
+    """
+
+
+@schema
+class Caging(dj.Manual):
+    # <class 'subjects.models.Subject'>
+    definition = """
+    -> Subject
+    caging_date:                date                    # caging date
+    ---
+    lamis_cage:			integer			# lamis cage
+    """
+
+
+@schema
+class Weaning(dj.Manual):
+    # <class 'subjects.models.Subject'>
+    definition = """
+    -> Subject
+    ---
+    wean_date:			date			# wean date
+    """
+
+
+@schema
+class Implanting(dj.Manual):
+    # <class 'subjects.models.Subject'>
+    definition = """
+    -> Subject
+    ---
+    implant_weight:		float			# implant weight
+    protocol_number:		varchar(255)		# protocol number
+    description:		varchar(255)		# description
+    adverse_effects:		varchar(255)		# adverse effects
+    (actual_severity)		-> reference.Severity   # actual severity
+    """
 
 
 @schema
@@ -148,27 +167,47 @@ class GenotypeTest(dj.Manual):
     -> Sequence
     genotype_test_id:		int     	# genotype test id
     ---
+    genotype_test_date:         date            # genotype date
     test_result:		integer		# test result
     """
 
 
 @schema
-class Birth(dj.Manual):
-    # can be made redundant via queries:
-    # <class 'subjects.models.BreedingPair'>
-    # <class 'subjects.models.Litter'>
-    #
-    # This table *only* required since making subject atttributes w/i subjects
-    # creates graph cycles.
-    #
-    # XXX: cage placement times to emulate previous BreedingPair
-    # (if reproductive success, etc. req'd)
+class Genotype(dj.Part):
+    # <class 'subjects.models.Subject'>
+    # <class 'subjects.models.Zygosity'>
+    # genotype = models.ManyToManyField('Allele', through='Zygosity')
     definition = """
     -> Subject
+    -> Allele
     ---
-    (father)			-> Subject		# father
-    (mother1) 			-> Subject		# mother1
-    # XXX: explain? (mother2)	-> [nullable] Subject	# mother2
+    zygosity:		integer 		# zygosity
     """
 
 
+@schema
+class Culling(dj.Manual):
+    # <class 'subjects.models.Subject'>
+    definition = """
+    -> Subject
+    ---
+    cull_method:		varchar(255)		# cull method
+    """
+
+
+@schema
+class Reduction(dj.Manual):
+    definition = """
+    reduced:			boolean			# reduced
+    reduced_date:		date			# reduced date
+    """
+
+
+@schema
+class Death(dj.Manual):
+    # <class 'subjects.models.Subject'>
+    definition = """
+    -> Subject
+    ---
+    death_date:                 date                    # death date
+    """
