@@ -29,8 +29,8 @@ class ExtracellularRecording(dj.Manual):
     recording_start_time:       datetime        # start time
     ---
     recording_end_time:         datetime        # end time
-    -> equipment.Appliance.Amplifier
-    -> equipment.Appliance.DAQ
+    -> equipment.Amplifier
+    -> equipment.DAQ
     ground_electrode:		varchar(255)    # ground electrode
     reference_electrode:	varchar(255)    # reference electrode
     filter_info:		varchar(255)    # filter information
@@ -45,7 +45,7 @@ class ExtracellularRecording(dj.Manual):
         probe_id:               int             # probe id
         ---
         -> BrainLocation
-        -> equipment.Appliance.ProbeModel
+        -> equipment.ProbeModel
         site_positions:         blob            # probe site positions
         channel_mapping:        blob            # channel mapping
         """
@@ -95,7 +95,7 @@ class IntracellularRecording(dj.Manual):
     recorded_voltage:           longblob        # recorded voltage
     voltage_command:            longblob        # voltage command
     electrode_type:             enum("W", "S")  # electrode type
-    -> equipment.Appliance.PipettePuller	# pipette puller
+    -> equipment.PipettePuller          	# pipette puller
     inner_diameter:		float		# inner diameter
     outer_diameter:		float		# outer diameter
     electrode_solution:		varchar(255)	# electrode solution
