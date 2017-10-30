@@ -129,7 +129,7 @@ class Caging(dj.Manual):
     # <class 'subjects.models.Subject'>
     definition = """
     -> Subject
-    caging_date:                date                    # caging date
+    caging_date:                datetime                # caging date
     ---
     lamis_cage:			integer			# lamis cage
     """
