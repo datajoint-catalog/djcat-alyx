@@ -28,7 +28,7 @@ class Weighing(dj.Manual):
     weighing_time:		datetime		# date time
     ---
     weight:			float			# weight
-    -> equipment.Appliance.WeighingScale
+    -> equipment.WeighingScale
     -> reference.User
     """
 
