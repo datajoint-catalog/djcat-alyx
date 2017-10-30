@@ -49,7 +49,7 @@ class WidefieldImaging(dj.Manual):
     raw_frames=NULL:            longblob        # n*w*h*c video
     -> reference.CoordinateTransformation
     -> SVDCompressedMovie
-    -> equipment.Appliance.LightSource
+    -> equipment.LightSource
     """
 
 
@@ -64,9 +64,9 @@ class TwoPhotonImaging(dj.Manual):
     -> actions.Session
     ---
     -> reference.User
-    2p_create_date:             datetime        # create date
-    2p_start_time:              datetime	# nominal start time
-    2p_end_time:                datetime	# nominal end time
+    twop_create_date:           datetime        # create date
+    twop_start_time:            datetime	# nominal start time
+    twop_end_time:              datetime	# nominal end time
     description:		varchar(255)	# description
     excitation_wavelength:	float		# excitation nominal wavelength
     recording_wavelength:	float		# recording nominal wavelength
