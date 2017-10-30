@@ -50,7 +50,6 @@ class Allele(dj.Manual):
 @schema
 class Line(dj.Manual):
     # <class 'subjects.models.Line'>
-    # TODO: autoname index: basically autogenerates a unique sequence
     definition = """
     -> Species
     -> Strain
@@ -62,9 +61,6 @@ class Line(dj.Manual):
     target_phenotype:			varchar(255)	# target phenotype
     auto_name:				varchar(255)	# auto name
     is_active:				boolean		# is active
-    subject_autoname_index:		integer		# subject autoname index
-    breeding_pair_autoname_index:	integer		# breeding pair autoname index
-    litter_autoname_index:		integer		# litter autoname index
     """
 
 
