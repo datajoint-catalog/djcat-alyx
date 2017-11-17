@@ -1,22 +1,11 @@
 import datajoint as dj
 
-import equipment
 import behavior
+import reference
+import equipment
+
 
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
-
-
-@schema
-class BrainLocation(dj.Manual):
-    # XXX: not connected to reference.*
-    # <class 'electrophysiology.models.BaseBrainLocation'>
-    definition = """
-    ccf_ap:			float		# ccf ap
-    ccf_dv:			float		# ccf dv
-    ccf_lr:			float		# ccf lr
-    ---
-    allen_ontology:		varchar(255)	# allen ontology
-    """
 
 
 @schema
@@ -44,7 +33,7 @@ class ExtracellularRecording(dj.Manual):
         definition = """
         probe_id:               int             # probe id
         ---
-        -> BrainLocation
+        -> reference.BrainLocation
         -> equipment.ProbeModel
         site_positions:         blob            # probe site positions
         channel_mapping:        blob            # channel mapping
@@ -67,7 +56,7 @@ class SortedUnitGroup(dj.Computed):
         -> SortedUnitGroup
         cluster_number:         integer         # cluster number
         ---
-        -> BrainLocation
+        -> reference.BrainLocation
         channel_group:          integer         # channel group
         width:                  float		# trough to peak width
         half_width:             float		# half width
@@ -88,7 +77,7 @@ class IntracellularRecording(dj.Manual):
     # <class 'electrophysiology.models.IntracellularRecording'>
     definition = """
     -> behavior.Session
-    -> BrainLocation
+    -> reference.BrainLocation
     intracelllular_rec_start:   datetime        # start time
     ---
     intracelllular_rec_end:     datetime        # end time

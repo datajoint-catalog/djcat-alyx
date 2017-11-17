@@ -48,7 +48,6 @@ class PermissionType(dj.Lookup):
 
 @schema
 class UserPermission(dj.Lookup):
-
     definition = """
     -> User
     -> PermissionType
@@ -58,13 +57,14 @@ class UserPermission(dj.Lookup):
 @schema
 class BrainLocation(dj.Manual):
     # <class 'misc.models.BrainLocation'>
+    # <class 'electrophysiology.models.BaseBrainLocation'>
     definition = """
-    brain_location_id:		int		# brain location id
+    ccf_ap:			float		# ccf ap
+    ccf_dv:			float		# ccf dv
+    ccf_lr:			float		# ccf lr
     ---
-    name:			varchar(255)	# name
-    stereotaxic_coordinates:	longblob	# stereotaxic coordinates
-    description:		varchar(255)	# description
-    allen_location_ontology:    varchar(255)	# allen location ontology
+    brain_location_description: varchar(64)	# description
+    allen_location_ontology:    varchar(255)	# allen ontology
     """
 
 
