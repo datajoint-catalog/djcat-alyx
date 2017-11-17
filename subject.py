@@ -5,6 +5,17 @@ import reference
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
 
+# Actions:
+# Refactor questions w/r/t old objs:
+#
+# - <class 'actions.models.ProcedureType'>: SKIPPED
+#   What does this do aside from provide a description?
+#   should be inclued for e.g. steps, etc?
+# - <class 'actions.models.BaseAction'>: SKIPPED
+#   Other than key info, does this provide anything other than 'narritive'?
+#   if so, needed?
+
+
 @schema
 class Species(dj.Manual):
     # <class 'subjects.models.Species'>
@@ -81,12 +92,12 @@ class SubjectRequest(dj.Manual):
     definition = """
     -> reference.User
     -> Line
-    subject_request_id:			int     	# subject request id
+    subject_request_id:         int                  	# subject request id
     ---
-    count:				integer		# count
-    date_time:				date		# date time
-    due_date:				date		# due date
-    description:			varchar(255)	# description
+    count:                      integer 		# count
+    date_time:                  date    		# date time
+    due_date:                   date    		# due date
+    description:                varchar(255)            # description
     """
 
 
@@ -121,6 +132,44 @@ class Birth(dj.Manual):
 
 
 @schema
+class Weighing(dj.Manual):
+    # <class 'actions.models.Weighing'>
+    definition = """
+    -> Subject
+    weighing_time:		datetime		# date time
+    ---
+    weight:			float			# weight
+    -> equipment.WeighingScale
+    -> reference.User
+    """
+
+
+@schema
+class WaterAdministration(dj.Manual):
+    # <class 'actions.models.WaterAdministration'>
+    definition = """
+    -> Subject
+    administration_time:	datetime		# date time
+    ---
+    water_administered:		float			# water administered
+    hydrogel=NULL:		boolean                 # hydrogel
+    -> reference.User
+    """
+
+@schema
+class WaterRestriction(dj.Manual):
+    # <class 'actions.models.WaterRestriction'>
+    definition = """
+    -> Subject
+    restriction_start_time:     datetime	# start time
+    ---
+    restriction_end_time:       datetime	# end time
+    -> equipment.LabLocation
+    -> reference.User
+    """
+
+
+@schema
 class Caging(dj.Manual):
     # <class 'subjects.models.Subject'>
     definition = """
@@ -138,20 +187,6 @@ class Weaning(dj.Manual):
     -> Subject
     ---
     wean_date:			date			# wean date
-    """
-
-
-@schema
-class Implant(dj.Manual):
-    # <class 'subjects.models.Subject'>
-    definition = """
-    -> Subject
-    ---
-    implant_weight:		float			# implant weight
-    protocol_number:		varchar(255)		# protocol number
-    description:		varchar(255)		# description
-    adverse_effects:		varchar(255)		# adverse effects
-    (actual_severity)		-> reference.Severity   # actual severity
     """
 
 
@@ -182,6 +217,53 @@ class Genotype(dj.Manual):
 
 
 @schema
+class Surgery(dj.Manual):
+    # <class 'actions.models.Surgery'>
+    definition = """
+    -> Subject
+    -> reference.BrainLocation
+    surgery_start_time:		datetime        # surgery start time
+    ---
+    surgery_end_time:		datetime        # surgery end time
+    outcome_type:		varchar(255)	# outcome type
+    narrative:			varchar(255)	# narrative
+    -> equipment.LabLocation
+    -> reference.User
+    """
+
+
+@schema
+class Implant(dj.Manual):
+    # <class 'subjects.models.Subject'>
+    definition = """
+    -> Subject
+    ---
+    implant_weight:		float			# implant weight
+    protocol_number:		varchar(255)		# protocol number
+    description:		varchar(255)		# description
+    adverse_effects:		varchar(255)		# adverse effects
+    (actual_severity)		-> reference.Severity   # actual severity
+    """
+
+
+@schema
+class VirusInjection(dj.Manual):
+    # <class 'actions.models.VirusInjection'>
+    # XXX: user was m2m field in django
+    definition = """
+    -> Subject
+    -> equipment.VirusBatch
+    injection_time:		datetime        	# injection time
+    ---
+    injection_volume:		float   		# injection volume
+    rate_of_injection:		float                   # rate of injection
+    injection_type:		varchar(255)    	# injection type
+    -> equipment.LabLocation
+    -> reference.User
+    """
+
+
+@schema
 class Culling(dj.Manual):
     # <class 'subjects.models.Subject'>
     definition = """
@@ -196,6 +278,19 @@ class Reduction(dj.Manual):
     definition = """
     reduced:			boolean			# reduced
     reduced_date:		date			# reduced date
+    """
+
+@schema
+class OtherAction(dj.Manual):
+    # <class 'actions.models.OtherAction'>
+    definition = """
+    -> Subject
+    other_action_start_time:    datetime	# start time
+    ---
+    other_action_end_time:      datetime	# end time
+    descrption:                 varchar(255)    # description
+    -> equipment.LabLocation
+    -> reference.User
     """
 
 
