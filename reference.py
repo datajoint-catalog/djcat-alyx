@@ -23,38 +23,6 @@ class User(dj.Manual):
 
 
 @schema
-class UserGroup(dj.Manual):
-    TODO = True
-    definition = """
-    groupname:		varchar(255)	# groupname
-    """
-
-    class UserGroupMembership(dj.Part):
-
-        definition = """
-        -> UserGroup
-        -> User
-        """
-
-
-@schema
-class PermissionType(dj.Lookup):
-
-    definition = """
-    permission: varchar(30)
-    """
-    contents = zip(['p1', 'p2', 'p3'])
-
-
-@schema
-class UserPermission(dj.Lookup):
-    definition = """
-    -> User
-    -> PermissionType
-    """
-
-
-@schema
 class BrainLocation(dj.Manual):
     # <class 'misc.models.BrainLocation'>
     # <class 'electrophysiology.models.BaseBrainLocation'>
