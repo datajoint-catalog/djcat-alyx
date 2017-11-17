@@ -95,6 +95,6 @@ class Pharmacology(dj.Manual):
     ---
     administration_end_time:    float		# end time
     administration_route:	varchar(255)	# administration route
-    concentration:		varchar(255)	# concentration
-    volume:			varchar(255)	# volume
+    concentration:		float           # concentration
+    volume:			float   	# volume
     """
