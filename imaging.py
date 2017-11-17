@@ -77,7 +77,7 @@ class TwoPhotonImaging(dj.Manual):
 
 
 @schema
-class ROIDetection(dj.Manual):
+class ROIDetection(dj.Computed):
     # <class 'imaging.models.TwoPhotonImaging'>
     definition = """
     -> behavior.Session
