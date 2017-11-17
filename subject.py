@@ -140,7 +140,6 @@ class Weighing(dj.Manual):
     ---
     weight:			float			# weight
     -> equipment.WeighingScale
-    -> reference.User
     """
 
 
@@ -153,7 +152,6 @@ class WaterAdministration(dj.Manual):
     ---
     water_administered:		float			# water administered
     hydrogel=NULL:		boolean                 # hydrogel
-    -> reference.User
     """
 
 @schema
@@ -165,7 +163,6 @@ class WaterRestriction(dj.Manual):
     ---
     restriction_end_time:       datetime	# end time
     -> equipment.LabLocation
-    -> reference.User
     """
 
 
@@ -228,7 +225,6 @@ class Surgery(dj.Manual):
     outcome_type:		varchar(255)	# outcome type
     narrative:			varchar(255)	# narrative
     -> equipment.LabLocation
-    -> reference.User
     """
 
 
@@ -259,7 +255,6 @@ class VirusInjection(dj.Manual):
     rate_of_injection:		float                   # rate of injection
     injection_type:		varchar(255)    	# injection type
     -> equipment.LabLocation
-    -> reference.User
     """
 
 
@@ -290,7 +285,6 @@ class OtherAction(dj.Manual):
     other_action_end_time:      datetime	# end time
     descrption:                 varchar(255)    # description
     -> equipment.LabLocation
-    -> reference.User
     """
 
 

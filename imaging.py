@@ -18,7 +18,6 @@ class SVDCompressedMovie(dj.Manual):
     -> behavior.Session
     svd_movie_id:               int             # svd movie id
     ---
-    -> reference.User
     svd_create_date:            datetime        # create date
     eigenframes:                longblob        # svd eigenframes
     timecourses:                longblob        # svd timecourses
@@ -36,7 +35,6 @@ class WidefieldImaging(dj.Manual):
     definition = """
     -> behavior.Session
     ---
-    -> reference.User
     widefield_create_date:      datetime        # create date
     widefield_start_time:       datetime	# nominal start time
     widefield_end_time:         datetime	# nominal end time
@@ -63,7 +61,6 @@ class TwoPhotonImaging(dj.Manual):
     definition = """
     -> behavior.Session
     ---
-    -> reference.User
     twop_create_date:           datetime        # create date
     twop_start_time:            datetime	# nominal start time
     twop_end_time:              datetime	# nominal end time
@@ -82,7 +79,6 @@ class ROIDetection(dj.Computed):
     definition = """
     -> behavior.Session
     ---
-    -> reference.User
     roi_create_date:            datetime        # create date
     roi_start_time:             datetime	# nominal start time
     roi_end_time:               datetime	# nominal end time
