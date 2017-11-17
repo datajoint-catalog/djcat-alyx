@@ -46,7 +46,7 @@ class WidefieldImaging(dj.Manual):
     excitation_wavelength:	float		# excitation nominal wavelength
     recording_wavelength:	float		# recording nominal wavelength
     recording_device:		varchar(255)	# recording device
-    raw_frames=NULL:            longblob        # n*w*h*c video
+    raw_frames:                 longblob        # n*w*h*c video
     -> reference.CoordinateTransformation
     -> SVDCompressedMovie
     -> equipment.LightSource
