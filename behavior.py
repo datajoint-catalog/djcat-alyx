@@ -75,10 +75,13 @@ class OptogeneticStimulus(dj.Manual):
     class Pulse(dj.Part):
         definition = """
         -> OptogeneticStimulus
+        pulse_start_time:       float           # pulse start time
         ---
-        times:                  longblob        # times (n*2 start/stop)
-        positions:              longblob        # poitions (n*3 positions)
-        stimulus_power:         longblob        # power (n*1 pulse power)
+        pulse_stop_time:        float           # pulse stop time
+        pulse_power:            smallint        # pulse power
+        pulse_x:                float           # pulse x position
+        pulse_y:                float           # pulse y position
+        pulse_z:                float           # pulse z position
         """
 
 
