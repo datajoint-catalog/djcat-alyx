@@ -42,7 +42,7 @@ class PupilTracking(dj.Manual):
     eye:                        enum("L", "R")  # eye
     ---
     pupil_tracking_movie:       longblob        # pupil tracking movie (raw)
-    x_y_d:			longblob        # x y data
+    pupil_trace:                longblob        # x y d
     """
 
 
@@ -54,7 +54,7 @@ class HeadTracking(dj.Manual):
     head_tracking_start_time:   datetime        # start time
     ---
     head_tracking_movie:        longblob        # head tracking movie (raw)
-    x_y_theta:			longblob        # x y theta
+    head_position:              longblob        # x y theta
     """
 
 
