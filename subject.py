@@ -142,7 +142,7 @@ class Weaning(dj.Manual):
 
 
 @schema
-class Implanting(dj.Manual):
+class Implant(dj.Manual):
     # <class 'subjects.models.Subject'>
     definition = """
     -> Subject
