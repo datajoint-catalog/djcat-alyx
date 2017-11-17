@@ -26,15 +26,15 @@ class ExtracellularRecording(dj.Manual):
     # <class 'electrophysiology.models.ProbeModel'>
     definition = """
     -> behavior.Session
-    recording_start_time:       datetime        # start time
+    extracellular_rec_start:    datetime        # start time
     ---
-    recording_end_time:         datetime        # end time
+    extracellular_rec_end:      datetime        # end time
     -> equipment.Amplifier
     -> equipment.DAQ
     ground_electrode:		varchar(255)    # ground electrode
     reference_electrode:	varchar(255)    # reference electrode
     filter_info:		varchar(255)    # filter information
-    lfp:                        longblob        # low-pass filtered
+    recorded_potential:         longblob        # low-pass filtered
     impedance:                  longblob        # impedance
     gains:                      longblob        # gain
     """
@@ -89,7 +89,9 @@ class IntracellularRecording(dj.Manual):
     definition = """
     -> behavior.Session
     -> BrainLocation
+    intracelllular_rec_start:   datetime        # start time
     ---
+    intracelllular_rec_end:     datetime        # end time
     recorded_current:           longblob        # recorded current
     current_command:            longblob        # current command
     recorded_voltage:           longblob        # recorded voltage
