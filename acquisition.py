@@ -1,5 +1,9 @@
 import datajoint as dj
 
+import subject
+import equipment
+import reference
+
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
 '''
