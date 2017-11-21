@@ -2,7 +2,7 @@ import datajoint as dj
 
 import reference
 import equipment
-import behavior
+import acquisition
 
 schema = dj.schema(dj.config['names.%s' % __name__], locals())
 
@@ -15,7 +15,7 @@ class SVDCompressedMovie(dj.Manual):
     timecourses: (nSamples*nSVs)
     '''
     definition = """
-    -> behavior.Session
+    -> acquisition.Session
     svd_movie_id:               int             # svd movie id
     ---
     svd_create_date:            datetime        # create date
@@ -33,7 +33,7 @@ class WidefieldImaging(dj.Manual):
     # TODO: nullable SVDCompressedMovie
     # TODO: nullable LightSource
     definition = """
-    -> behavior.Session
+    -> acquisition.Session
     ---
     widefield_create_date:      datetime        # create date
     widefield_start_time:       datetime	# nominal start time
@@ -59,7 +59,7 @@ class TwoPhotonImaging(dj.Manual):
     # TODO: nullable CoordinateTransformation
     # TODO: nullable SVDCompressedMovie
     definition = """
-    -> behavior.Session
+    -> acquisition.Session
     ---
     twop_create_date:           datetime        # create date
     twop_start_time:            datetime	# nominal start time
@@ -77,7 +77,7 @@ class TwoPhotonImaging(dj.Manual):
 class ROIDetection(dj.Computed):
     # <class 'imaging.models.TwoPhotonImaging'>
     definition = """
-    -> behavior.Session
+    -> acquisition.Session
     ---
     roi_create_date:            datetime        # create date
     roi_start_time:             datetime	# nominal start time

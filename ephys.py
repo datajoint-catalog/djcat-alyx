@@ -1,6 +1,6 @@
 import datajoint as dj
 
-import behavior
+import acquisition
 import reference
 import equipment
 
@@ -14,7 +14,7 @@ class ExtracellularRecording(dj.Manual):
     # <class 'electrophysiology.models.ProbeInsertion'>
     # <class 'electrophysiology.models.ProbeModel'>
     definition = """
-    -> behavior.Session
+    -> acquisition.Session
     extracellular_rec_start:    datetime        # start time
     ---
     extracellular_rec_end:      datetime        # end time
@@ -30,6 +30,7 @@ class ExtracellularRecording(dj.Manual):
 
     class Probe(dj.Part):
         # XXX: TODO: split by electrode x/y/z; tie to other data
+        # XXX: why not linked to ExtracellularRecording
         definition = """
         probe_id:               int             # probe id
         ---
@@ -76,7 +77,7 @@ class SortedUnitGroup(dj.Computed):
 class IntracellularRecording(dj.Manual):
     # <class 'electrophysiology.models.IntracellularRecording'>
     definition = """
-    -> behavior.Session
+    -> acquisition.Session
     -> reference.BrainLocation
     intracelllular_rec_start:   datetime        # start time
     ---
