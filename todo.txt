@@ -1,0 +1,125 @@
+# status/todo
+
+Current state is a manually converted schema which retains the Alyx'
+notion of inherited Dataset, TimeSeries base classes & data attributes,
+along with a re-implemented 'Datajoiious' schema which removes these
+things in favor of internal blob storage and direct 'entity' typing.
+
+Some questions still remain concerning the need for the previous attributes,
+since they do track data provenenance in some way- namely:
+
+- To what extent is provenance tracking a hard requirement or a side-effect of
+  not having automated dependency tracking internally in the code, and if the
+  answer varies, which types is it specifically important for, and why.
+
+- To what extent is provenance tracking predicated on the notion of alyx as a
+  front end to a file-based repository, and to what extent would this be
+  obviated by use of DJ external file tracking
+
+- To what extent could some file attributes be tracked as blobs internally, and
+  which ones should not be
+
+Additionally, the alyx pkey/UUID scheme allows for some features and masks
+other relationships:
+
+ - Some objects were shifted into part tables due to key conflicts and
+   mismatching with DJ's unique-attribute-name expectation
+
+ - Relationships between these parts was at times ignored or assumed (FIXME:
+   really, or did my understanding of dj<->django mappings change?)
+
+ - The JSON per-object annotations & JSON Notes table are built against
+   inheritance and assuming common PKEYS
+
+# manual module dependancy ordering / renaming
+
+reference -> subject
+reference -> actions
+subject -> actions
+equipment -> actions
+actions -> acquisition
+acquisition -> behavior
+acquisition -> imaging
+acquisition -> ephys
+# BOOKMARK
+
+# flattened
+
+reference
+subject
+equipment
+actions
+acquisition
+behavior
+epyhs
+imaging
+
+# topological sort of django model classes
+# <class 'subjects.models.Species'>
+# <class 'subjects.models.Strain'>
+# <class 'subjects.models.Line'>
+# <class 'subjects.models.BreedingPair'>
+# <class 'subjects.models.Litter'>
+# <class 'subjects.models.Source'>
+# <class 'misc.models.OrderedUser'>
+# <class 'subjects.models.SubjectRequest'>
+# <class 'subjects.models.Subject'>
+# <class 'django.contrib.auth.models.User'>
+# <class 'subjects.models.Allele'>
+# <class 'subjects.models.Zygosity'>
+# <class 'subjects.models.Sequence'>
+# <class 'subjects.models.GenotypeTest'>
+# <class 'equipment.models.LabLocation'>
+# <class 'django.contrib.contenttypes.models.ContentType'>
+# <class 'equipment.models.EquipmentModel'>
+# <class 'equipment.models.VirusBatch'>
+# <class 'equipment.models.Appliance'>
+# <class 'equipment.models.WeighingScale'>
+# <class 'equipment.models.LightSource'>
+# <class 'equipment.models.Amplifier'>
+# <class 'equipment.models.PipettePuller'>
+# <class 'equipment.models.DAQ'>
+# <class 'actions.models.ProcedureType'>
+# <class 'actions.models.Weighing'>
+# <class 'actions.models.WaterAdministration'>
+# <class 'actions.models.VirusInjection'>
+# <class 'misc.models.BrainLocation'>
+# <class 'actions.models.Surgery'>
+# <class 'actions.models.Session'>
+# <class 'actions.models.WaterRestriction'>
+# <class 'actions.models.OtherAction'>
+# <class 'data.models.DataRepositoryType'>
+# <class 'data.models.DataRepository'>
+# <class 'data.models.DatasetType'>
+# <class 'data.models.Dataset'>
+# <class 'data.models.FileRecord'>
+# <class 'data.models.DataCollection'>
+# <class 'data.models.Timescale'>
+# <class 'data.models.TimeSeries'>
+# <class 'data.models.EventSeries'>
+# <class 'data.models.IntervalSeries'>
+# <class 'misc.models.Note'>
+# <class 'misc.models.CoordinateTransformation'>
+# <class 'behavior.models.PupilTracking'>
+# <class 'behavior.models.HeadTracking'>
+# <class 'behavior.models.EventSeries'>
+# <class 'behavior.models.IntervalSeries'>
+# <class 'behavior.models.OptogeneticStimulus'>
+# <class 'behavior.models.Pharmacology'>
+# <class 'electrophysiology.models.ExtracellularRecording'>
+# <class 'electrophysiology.models.ProbeModel'>
+# <class 'electrophysiology.models.ProbeInsertion'>
+# <class 'electrophysiology.models.BaseBrainLocation'>
+# <class 'electrophysiology.models.RecordingSite'>
+# <class 'electrophysiology.models.SpikeSorting'>
+# <class 'electrophysiology.models.SpikeSortedUnit'>
+# <class 'electrophysiology.models.IntracellularRecording'>
+# <class 'imaging.models.SVDCompressedMovie'>
+# <class 'imaging.models.WidefieldImaging'>
+# <class 'imaging.models.TwoPhotonImaging'>
+# <class 'imaging.models.ROIDetection'>
+# <class 'imaging.models.ROI'>
+### v1 CONVERSION BOOKMARK - above completed.
+### v1 CONVERSION BOOKMARK - above inprogress.
+### v2 CONVERSION BOOKMARK - above completed.
+### v2 CONVERSION BOOKMARK - above inprogress.
